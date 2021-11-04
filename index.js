@@ -15,11 +15,11 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(itemName, itemPrice, itemCategory){
+function createMenuItem(name, price, category){
     return {
-      name: itemName,
-      price: itemPrice,
-      category: itemCategory
+      name,
+      price,
+      category
     };
 }
 
@@ -173,9 +173,11 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+ function getReviewByRating(arr, revRating) {
+    return arr.filter(review => Math.floor(review.rating) === revRating);
   }
+
+  console.log(getReviewByRating(reviews, 4));
 
   
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
@@ -191,10 +193,11 @@ Use the getLongReviews function below to do the following:
   ]
 */
 
-function getLongReviews(/* code here */) {
-    /* code here */
-  }
-  
+function getLongReviews(arr) {
+  return arr.filter(review => review.feedback.split(' ').length > 15);
+}
+
+console.log(getLongReviews(reviews));
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪💪💪💪💪 
 This stretch goal does not use the reviews data!  You create your own object in this stretch goal.
@@ -214,10 +217,18 @@ Use the carMaker function below to do the following:
 */
 
 
-function carMaker(/* code here */) {
-    /* code here */
-    
+function carMaker(odometer) {
+  return{
+    odometer,
+    drive: function(distance){
+      this.odometer += distance;
+      return this.odometer;
+    }
+  }
 }
+
+const car1 = carMaker(10);
+console.log(car1.drive(100));
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
